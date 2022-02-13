@@ -1,0 +1,61 @@
+.item {
+  color: #000;
+  background-color: #fefefe;
+  display: grid;
+  grid-template-columns: 25% 1fr 20%;
+  /* border-radius: 1rem; */
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  align-items: center;
+  transition-property: background-color;
+  transition-duration: 400ms;
+  animation-name: fadeIn;
+  animation-duration: 400ms;
+  animation-direction: alternate;
+}
+
+.item:hover {
+  background-color: #efefef;
+}
+.item > .item-detail > .price {
+  font-weight: bold;
+  color: #43eb59;
+}
+.item > .purchase > .quantity {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item > .item-img {
+  text-align: center;
+  grid-row: 1 / -1;
+  object-fit: contain;
+}
+
+.item > .purchase {
+  text-align: center;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.item > .purchase .qty-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.item > .purchase > .add-to-cart {
+  background-color: #eba243;
+}
+.item > .purchase > .buy-now {
+  background-color: #8eeb43;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
