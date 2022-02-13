@@ -1,0 +1,14 @@
+.items {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr;
+  align-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #454545;
+}
+
+.items > p:first-child > span {
+  text-transform: capitalize;
+  color: #7bd85f;
+}
