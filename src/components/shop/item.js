@@ -1,18 +1,28 @@
 import './item.css';
-import { setQty, getItem } from '../../data/data';
-import { useState, useEffect } from 'react';
-const Item = (props) => {
-  const [item, setItem] = useState(props.item);
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 
+const Item = (props) => {
+  const navigate = useNavigate();
+  const { item, order } = props;
+  const [qty, setQty] = useState(() => {
+    const temp = order.getOrder().find((i) => i.id === item.id);
+    if (temp) {
+      return temp.qty;
+    }
+    return 0;
+  });
+  const [addCartBtnText, setAddCartBtnText] = useState('Add to Cart');
+  const [btnState, setBtnState] = useState(false);
   const onQtyChange = (type) => {
     switch (type) {
       case 'add':
-        setItem({ ...item, qty: item.qty + 1 });
+        setQty(qty + 1);
         break;
       case 'minus':
-        setItem((prevState) => {
-          if (item.qty - 1 >= 0) {
-            return { ...item, qty: item.qty - 1 };
+        setQty((prevState) => {
+          if (prevState - 1 >= 0) {
+            return prevState - 1;
           }
           return prevState;
         });
@@ -22,9 +32,26 @@ const Item = (props) => {
     }
   };
 
+  const onAddtoCart = (e) => {
+    if (order.addToCart(item.id, qty)) {
+      setBtnState(true);
+      e.target.textContent = 'Added!';
+    }
+  };
+
+  const onBuyNow = (e) => {
+    if (qty > 0) {
+      if (order.addToCart(item.id, qty)) {
+        navigate('/cart');
+      }
+    }
+  };
   useEffect(() => {
-    setQty(item.id, item.qty);
-  }, [item]);
+    if (qty && order.containsItem(item.id)) {
+      setAddCartBtnText('Update Qty');
+      setBtnState(false);
+    }
+  }, [qty]);
 
   return (
     <div className="item">
@@ -46,7 +73,21 @@ const Item = (props) => {
           >
             -
           </button>
-          <p>{item.qty}</p>
+          <input
+            type="number"
+            min="0"
+            step="1"
+            value={qty}
+            onChange={(e) => {
+              setBtnState(!btnState);
+              if (e.target.value) {
+                setQty(parseInt(e.target.value));
+              } else {
+                setQty(0);
+              }
+              e.target.value = qty;
+            }}
+          />
           <button
             className="qty-btn"
             onClick={() => {
@@ -56,8 +97,16 @@ const Item = (props) => {
             +
           </button>
         </div>
-        <button className="add-to-cart">Add to Cart</button>
-        <button className="buy-now">Buy Now</button>
+        <button
+          disabled={btnState}
+          className="add-to-cart"
+          onClick={onAddtoCart}
+        >
+          {addCartBtnText}
+        </button>
+        <button onClick={onBuyNow} className="buy-now">
+          Buy Now
+        </button>
       </div>
     </div>
   );

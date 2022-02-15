@@ -1,6 +1,6 @@
 .item {
   color: #000;
-  background-color: #fefefe;
+  background-color: #efefef;
   display: grid;
   grid-template-columns: 25% 1fr 20%;
   /* border-radius: 1rem; */
@@ -12,31 +12,40 @@
   animation-name: fadeIn;
   animation-duration: 400ms;
   animation-direction: alternate;
+  border-left: 0.5rem solid gray;
 }
 
 .item:hover {
-  background-color: #efefef;
-}
-.item > .item-detail > .price {
-  font-weight: bold;
-  color: #43eb59;
-}
-.item > .purchase > .quantity {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.item > .item-img {
-  text-align: center;
-  grid-row: 1 / -1;
-  object-fit: contain;
+  background-color: #fff;
 }
 
 .item > .purchase {
   text-align: center;
   display: grid;
+  height: 100%;
   grid-template-rows: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.75rem;
+}
+
+.item > .item-detail > .price {
+  font-weight: bold;
+  color: #43eb59;
+}
+
+.item > .purchase > .quantity {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item > .purchase > .quantity > input {
+  width: 100%;
+  text-align: center;
+}
+
+.item > .item-img {
+  text-align: center;
+  grid-row: 1 / -1;
+  object-fit: cover;
 }
 
 .item > .purchase .qty-btn {
