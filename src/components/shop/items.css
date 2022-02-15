@@ -1,11 +1,14 @@
 .items {
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr;
-  align-content: flex-start;
-  gap: 1rem;
-  padding: 1rem;
   background-color: #454545;
+  padding: 1rem;
+}
+
+.items > .items-list {
+  display: grid;
+  height: auto;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 1rem;
 }
 
 .items > p:first-child > span {
