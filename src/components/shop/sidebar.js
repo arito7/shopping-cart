@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Sidebar = (props) => {
-  const [items, setItems] = useState(props.items);
+  const { items } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   return (
     <div className="sidebar">
