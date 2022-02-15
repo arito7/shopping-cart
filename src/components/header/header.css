@@ -18,3 +18,10 @@
 .header > nav > a.active {
   text-decoration: underline;
 }
+
+.header > nav > a > span.order-count {
+  text-decoration: none;
+  background-color: red;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
