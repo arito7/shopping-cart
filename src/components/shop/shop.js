@@ -1,14 +1,15 @@
 import { getItems } from '../../data/data';
 import './shop.css';
 import Sidebar from './sidebar';
-import { useEffect, useState } from 'react';
 import Items from './items';
+import { useOutletContext } from 'react-router';
 const Shop = () => {
-  const [items, setItems] = useState(getItems());
+  const [order] = useOutletContext();
+  const items = getItems();
   return (
     <div className="shop">
       <Sidebar items={items} />
-      <Items items={items} />
+      <Items items={items} order={order} />
     </div>
   );
 };
