@@ -1,7 +1,6 @@
 import { getItems } from '../../data/data';
-import { getOrder, getOrderTotal } from '../../data/order';
 import './cart.css';
-import { useNavigate } from 'react-router';
+import { useNavigate, useOutletContext } from 'react-router';
 
 const EmptyCart = () => {
   const navigate = useNavigate();
@@ -45,7 +44,7 @@ const OrderSummary = (props) => {
           </tr>
         </thead>
         <tbody>
-          {order.map((i) => {
+          {order.getOrder().map((i) => {
             const item = items.find((item) => item.id === i.id);
             return (
               <tr key={item.id}>
@@ -60,7 +59,7 @@ const OrderSummary = (props) => {
         <tfoot>
           <tr>
             <td colSpan={3}>Order Total</td>
-            <td>${getOrderTotal(items)}</td>
+            <td>${order.getOrderTotal(items)}</td>
           </tr>
         </tfoot>
       </table>
@@ -70,11 +69,11 @@ const OrderSummary = (props) => {
 };
 
 const Cart = () => {
+  const [order] = useOutletContext();
   const items = getItems();
-  const order = getOrder();
   return (
     <div className="cart">
-      {order.length ? (
+      {order.getOrder().length ? (
         <OrderSummary items={items} order={order} />
       ) : (
         <EmptyCart />
