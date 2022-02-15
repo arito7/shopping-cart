@@ -1,0 +1,16 @@
+.home {
+  display: grid;
+  height: 100%;
+  padding: 2rem;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.home > img {
+  height: 100%;
+  cursor: pointer;
+  object-fit: contain;
+}
