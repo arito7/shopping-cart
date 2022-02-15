@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/github.io/shopping-cart/static/css/main.de65c652.css",
+    "main.js": "/github.io/shopping-cart/static/js/main.a65932c2.js",
+    "static/media/PressStart2P-Regular.ttf": "/github.io/shopping-cart/static/media/PressStart2P-Regular.21503c6a5385ab41dde9.ttf",
+    "static/media/bunnymask.png": "/github.io/shopping-cart/static/media/bunnymask.dfc613a54d8bcd92cc56.png",
+    "static/media/cake.png": "/github.io/shopping-cart/static/media/cake.b2392b6ade804c590d23.png",
+    "index.html": "/github.io/shopping-cart/index.html",
+    "main.de65c652.css.map": "/github.io/shopping-cart/static/css/main.de65c652.css.map",
+    "main.a65932c2.js.map": "/github.io/shopping-cart/static/js/main.a65932c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de65c652.css",
+    "static/js/main.a65932c2.js"
+  ]
+}
